@@ -1,0 +1,48 @@
+# -------------------------
+# Python build artifacts
+# -------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Package metadata
+*.egg-info/
+*.egg
+dist/
+build/
+
+# -------------------------
+# uv / virtual environment
+# -------------------------
+.venv/
+uv.lock
+
+# -------------------------
+# Project-generated files
+# -------------------------
+output.srt
+*.srt
+*.vtt
+
+# -------------------------
+# Local audio inputs
+# (keep the folder, ignore files)
+# -------------------------
+audio/*
+!audio/.gitkeep
+
+# -------------------------
+# OS / Editor cruft
+# -------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# VSCode
+.vscode/
+
+# PyCharm / JetBrains
+.idea/
+
