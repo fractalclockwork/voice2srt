@@ -1,48 +1,92 @@
 # -------------------------
-# Python build artifacts
+# Python bytecode / caches
 # -------------------------
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
+.Python
 
-# Package metadata
+# -------------------------
+# Packaging / build
+# -------------------------
 *.egg-info/
 *.egg
 dist/
 build/
+pip-wheel-metadata/
 
 # -------------------------
-# uv / virtual environment
+# Virtual environments
 # -------------------------
 .venv/
-uv.lock
+venv/
+ENV/
+env/
+
+# Track uv.lock for reproducible installs (`uv lock`, commit lockfile).
 
 # -------------------------
-# Project-generated files
+# Test / coverage / linters
+# -------------------------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.cover
+.hypothesis/
+.tox/
+.nox/
+
+# -------------------------
+# Project outputs (CLI / experiments)
 # -------------------------
 output.srt
 *.srt
 *.vtt
+*.log
 
 # -------------------------
-# Local audio inputs
-# (keep the folder, ignore files)
+# Local media (keep dirs, ignore contents)
 # -------------------------
 audio/*
 !audio/.gitkeep
 
+# Optional local test assets (see README / CONTRIBUTING)
+data/*
+!data/.gitkeep
+
 # -------------------------
-# OS / Editor cruft
+# Secrets and local env (never commit)
+# -------------------------
+.env
+.env.*
+!.env.example
+*.pem
+secrets/
+
+# -------------------------
+# Jupyter
+# -------------------------
+.ipynb_checkpoints/
+
+# -------------------------
+# OS / editor
 # -------------------------
 .DS_Store
+.AppleDouble
+.LSOverride
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 *.swp
 *.swo
+*~
 
 # VSCode
 .vscode/
 
 # PyCharm / JetBrains
 .idea/
-

@@ -1,7 +1,29 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
 [project]
-name = "lecture-asr"
+name = "voice2srt"
 version = "0.1.0"
+description = "CLI for sentence-aligned SRT subtitles from audio (Whisper, spaCy, readability splitting)."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.10"
+authors = [{ name = "voice2srt contributors" }]
+keywords = ["subtitles", "srt", "whisper", "asr", "speech-recognition", "captions"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: GPU :: NVIDIA CUDA",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
 dependencies = [
     "numpy<2.0.0",
     "tqdm",
@@ -13,12 +35,31 @@ dependencies = [
     "en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1.tar.gz",
 ]
 
+[project.urls]
+Homepage = "https://github.com/fractalclockwork/voice2srt"
+Repository = "https://github.com/fractalclockwork/voice2srt"
+Issues = "https://github.com/fractalclockwork/voice2srt/issues"
+
 [project.scripts]
-lecture-asr = "lecture_asr.cli:main"
+voice2srt = "voice2srt.cli:main"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/voice2srt"]
 
 [tool.uv]
 package = true
 
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "integration: full GPU Whisper pipeline vs data/test_output_1min.srt (slow)",
+]
+
 [tool.uv.sources]
 en-core-web-sm = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1.tar.gz" }
-
